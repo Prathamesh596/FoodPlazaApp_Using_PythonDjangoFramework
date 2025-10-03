@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>FoodPlaza Gallery </title>
+        {% load static %}
+        <link href="{% static 'css/templatemo_style.css'%}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        {% include 'Foodplazaapp/header.html' %}
+        <table>
+            <thead>
+            <tr>
+                <th>food Id</th>
+                <th>food Name</th>
+                <th>food Type</th>
+                <th>food Category</th>
+                <th>food Price</th>
+                {% if request.session.userId is  None and request.session.admin is not None %}
+                <th colspan="2">Action</th>
+                {% endif %}
+
+                {% if request.session.userId is not  None and request.session.admin is None %}
+                <th>Action</th>
+                {% endif %}
+            </tr>
+        </thead>
+        
+            <tbody>
+                {% for f in foods %}
+            <tr>
+                <td>{{f.foodId}}</td>
+                <td>{{f.foodName}}</td>
+                <td>{{f.foodType}}</td>
+                <td>{{f.foodCategory}}</td>
+                <td>{{f.foodPrice}}</td>
+                {% if request.session.userId is  None and request.session.admin is not None %}
+                <td><a href="getfood/{{f.foodId}}">Update</a></td>
+
+                <td><a href="deletefood/{{f.foodId}}">Delete</a></td>
+                {% endif %}
+
+
+                {% if request.session.userId is not  None and request.session.admin is None %}
+                <td><a href="displaycart/{{f.foodId}}">Add to Cart</a></td>
+                {% endif %}
+            </tr>
+            {%endfor%}
+        </tbody>
+        </table>
+        {% include 'Foodplazaapp/footer.html' %}
+    </body>
+</html>

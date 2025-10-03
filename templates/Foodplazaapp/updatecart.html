@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>UPDATE CART</title>
+        {% load static %}
+        <link href="{% static 'css/templatemo_style.css'%}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        {% include 'Foodplazaapp/header.html' %}
+        <form action="updatecart" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>cartId</td>
+                    <td><input type="text" name="cartId"></td>
+                </tr>
+                <tr>
+                    <td>custEmail</td>
+                    <td><input type="text" name="custEmail"></td>
+                </tr>
+                <tr>
+                    <td>foodId</td>
+                    <td><input type="text" name="foodId"></td>
+                </tr>
+                <tr>
+                    <td>foodName</td>
+                    <td><input type="text" name="foodName"></td>
+                </tr>
+                <tr>
+                    <td>foodPrice</td>
+                    <td><input type="text" name="foodPrice"></td>
+                </tr>
+                <tr>
+                    <td>foodQuantity</td>
+                    <td><input type="text" name="foodQuantity"></td>
+                </tr>
+                <tr>
+                    <td>totalPrice</td>
+                    <td><input type="text" name="totalPrice"></td>
+                </tr>
+            </table>
+            <input type="submit" value="save">
+                <input type="reset" value="clear">
+                {% include 'Foodplazaapp/footer.html' %}
+        </form>
+    </body>
+</html>

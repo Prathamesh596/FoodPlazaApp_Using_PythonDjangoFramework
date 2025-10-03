@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Cart</title>
+        {% load static %}
+        <link href="{% static 'css/templatemo_style.css'%}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        {% include 'Foodplazaapp/header.html' %}
+        <form action="savecart" method="POST">
+            {% csrf_token %}
+            <table>
+                
+                <tr>
+                    <td>Customer EmailId :</td>
+                    <td><input type="text" name="custEmail" value="{{request.session.userId}}"></td>
+                </tr>
+                <tr>
+                    <td>Food Id :</td>
+                    <td><input type="text" name="foodId" value="{{f.foodId}}"></td>
+                </tr>
+                <tr>
+                    <td>Food Name :</td>
+                    <td><input type="text" name="foodName" value="{{f.foodName}}"></td>
+                </tr>
+                <tr>
+                    <td>Food Price :</td>
+                    <td><input type="text" name="foodPrice" value="{{f.foodPrice}}"></td>
+                </tr>
+                <tr>
+                    <td>Food Quantity :</td>
+                    <td><input type="text" name="foodQuantity" value="{{f.foodQuantity}}"></td>
+                </tr>
+                <tr>
+                    <td> Total Price :</td>
+                    <td><input type="text" name="totalPrice" value="{{f.totalPrice}}"></td>
+                </tr>
+
+            </table>
+            <input type="submit" value="save">
+            <input type="reset" value="clear">
+        </form>
+        {% include 'Foodplazaapp/footer.html' %}
+    </body>
+</html>

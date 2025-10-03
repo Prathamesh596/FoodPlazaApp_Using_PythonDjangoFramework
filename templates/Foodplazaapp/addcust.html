@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>ADD CUSTOMER</title>
+        {% load static %}
+        <link href="{% static 'css/templatemo_style.css'%}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        {% include 'Foodplazaapp/header.html' %}
+        <form action="addcust" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>custName</td>
+                    <td><input type="text" name="custName"></td>
+                </tr>
+                <tr>
+                    <td>custEmail</td>
+                    <td><input type="text" name="custEmail"></td>
+                </tr>
+                <tr>
+                    <td>custPassword</td>
+                    <td><input type="text" name="custPassword"></td>
+                </tr>
+                <tr>
+                    <td>custContact</td>
+                    <td><input type="text" name="custContact"></td>
+                </tr>
+                <tr>
+                    <td>custAddress</td>
+                    <td><input type="text" name="custAddress"></td>
+                </tr>
+                
+            </table>
+            <input type="submit" value="save">
+            <input type="reset" value="clear">
+        </form>
+        {% include 'Foodplazaapp/footer.html' %}
+    </body>
+</html>

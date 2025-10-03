@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Header</title>
+    <link href="{% static 'css/templatemo_style.css'%}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="templatemo_container">
+        <div id="templatemo_header">
+            <div id="site_title"></div>
+        </div> <!-- end of header -->
+        
+        <div id="templatemo_menu">
+            <ul>
+                {% if request.session.userId is None and request.session.admin is None %}
+                <li class="current"><a href="index"><b>Home</b></a></li>
+                <li><a href="showfood"><b>Food Menus</b></a></li>
+                <li><a href="displayLogin"><b>Login</b></a></li>
+                <li><a href="displaycustform"><b>Registration</b></a></li>
+                {% endif %}
+
+
+                {% if request.session.userId is not None and request.session.admin is None %}
+                <li><a href="showfood"><b>Food Menus</b></a></li>
+               
+                <li><a href="getcust">edit profile</a></li>
+                <li ><a href="showcart"><b>Cart</b></a></li>
+                <li><a href="myorders">MyOrders</a></li>
+                <li ><a href="viewpass"><b>Update Password</b></a></li>
+                <li ><a href="logout"><b>Logout</b></a></li>
+                {% endif %}
+
+                {% if request.session.userId is  None and request.session.admin is not None %}
+                <li><a href="showfood"><b>Food Menus</b></a></li>
+                <li><a href="displayfoodform"><b>AddFood</b></a></li>
+                <li ><a href="showcust"><b>Customer List</b></a></li>
+                
+                <li ><a href="viewpass"><b>Update Password</b></a></li>
+                <li ><a href="logout"><b>Logout</b></a></li>
+
+                {% endif %}
+            </ul>
+        </div>
+</body>
+</html>

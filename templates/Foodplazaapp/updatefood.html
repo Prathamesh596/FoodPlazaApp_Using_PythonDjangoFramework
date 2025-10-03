@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>UPDATE FOOD</title>
+        {% load static %}
+        <link href="{% static 'css/templatemo_style.css'%}" rel="stylesheet" type="text/css" />
+
+    </head>
+    <body>
+        {% include 'Foodplazaapp/header.html' %}
+        <form action="updatefood" method="POST">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>FoodId</td>
+                    <td><input type="text" name="foodId" readonly value="{{f.foodId}}"></td>
+                </tr>
+
+                <tr>
+                    <td>foodName</td>
+                    <td><input type="text" name="foodName" value="{{f.foodName}}"></td>
+                </tr>
+                <tr>
+                    <td>foodType</td>
+                    <td><input type="text" name="foodType" value="{{f.foodType}}"></td>
+                </tr>
+                <tr>
+                    <td>foodCategory</td>
+                    <td><input type="text" name="foodCategory" value="{{f.foodCategory}}"></td>
+                </tr>
+                <tr>
+                    <td>foodPrice</td>
+                    <td><input type="text" name="foodPrice" value="{{f.foodPrice}}"></td>
+                </tr>
+                
+            </table>
+            <input type="submit" value="save">
+                <input type="reset" value="clear">
+        </form>
+        {% include 'Foodplazaapp/footer.html' %}
+    </body>
+</html>

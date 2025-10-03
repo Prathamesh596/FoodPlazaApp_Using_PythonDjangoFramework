@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Cart </title>
+        {% load static %}
+        <link href="{% static 'css/templatemo_style.css'%}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        {% include 'Foodplazaapp/header.html' %}
+        <form action="placeOrder" method="post">
+            {% csrf_token %}
+        <table>
+            <thead>
+            <tr>
+                <th>Cart Id</th>
+                <th>Customer Email Id</th>
+                <th>food Id</th>
+                <th>food Name</th>
+                <th>food Price</th>
+                <th>food Quantity</th>
+                <th>Total Price</th>
+
+                <th colspan="2">Action</th>
+              
+            </tr>
+        </thead>
+        
+            <tbody>
+                {% for i in c %}
+            <tr>
+                <td>{{i.cartId}}</td>
+                <td>{{i.custEmail}}</td>
+                <td>{{i.foodId}}</td>
+                <td>{{i.foodName}}</td>
+                <td>{{i.foodPrice}}</td>
+                <td>{{i.foodQuantity}}</td>
+                <td>{{i.totalPrice}}</td>
+
+                
+                <td><a href="deletecart/{{i.cartId}}">Delete cart</a></td>
+                
+            </tr>
+            {%endfor%}
+        </tbody>
+        </table>
+        <input type="submit" value="placeOrder">
+        
+</form>
+        {% include 'Foodplazaapp/footer.html' %}
+    </body>
+</html>

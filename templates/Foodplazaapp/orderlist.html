@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <title>FoodPlaza Gallery </title>
+        {% load static %}
+        <link href="{% static 'css/templatemo_style.css'%}" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        {% include 'Foodplazaapp/header.html' %}
+        <table>
+            <thead>
+            <tr>
+                <th>order Id</th>
+                <th>orderDate</th>
+                <th>totalBill</th>
+                
+                {% if request.session.userId is  not None and request.session.admin is  None %}
+                <th>Email Id</th>
+                {% endif %}
+
+               
+            </tr>
+        </thead>
+        
+            <tbody>
+                {% for o in orders %}
+            <tr>
+                <td>{{o.orderId}}</td>
+                <td>{{o.orderDate}}</td>
+                <td>{{o.totalBill}}</td>
+                <td>{{o.custEmail}}</td>
+                
+               
+                
+                
+            </tr>
+            {%endfor%}
+        </tbody>
+        </table>
+        {% include 'Foodplazaapp/footer.html' %}
+    </body>
+</html>
